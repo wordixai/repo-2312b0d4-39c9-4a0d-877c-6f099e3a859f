@@ -2,26 +2,100 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Exhaust Art Design System - Automotive luxury meets artistic sophistication */
 
 @layer base {
   :root {
-   
-  }
-
-  .dark {
-
+    /* Core Brand Colors - Ferrari-inspired with artistic flair */
+    --ferrari-red: 0 84% 60%;
+    --carbon-black: 0 0% 8%;
+    --platinum-silver: 210 14% 83%;
+    --racing-gold: 45 93% 58%;
+    --exhaust-steel: 210 11% 15%;
+    --canvas-white: 0 0% 98%;
+    
+    /* Artistic Gradient Colors */
+    --paint-blue: 220 91% 60%;
+    --paint-purple: 280 83% 65%;
+    --paint-orange: 25 95% 53%;
+    --smoke-gray: 210 9% 31%;
+    
+    /* Design System Variables */
+    --background: var(--canvas-white);
+    --foreground: var(--carbon-black);
+    --card: var(--canvas-white);
+    --card-foreground: var(--carbon-black);
+    --popover: var(--canvas-white);
+    --popover-foreground: var(--carbon-black);
+    --primary: var(--ferrari-red);
+    --primary-foreground: var(--canvas-white);
+    --secondary: var(--platinum-silver);
+    --secondary-foreground: var(--carbon-black);
+    --muted: var(--platinum-silver);
+    --muted-foreground: var(--smoke-gray);
+    --accent: var(--racing-gold);
+    --accent-foreground: var(--carbon-black);
+    --destructive: 0 84% 60%;
+    --destructive-foreground: var(--canvas-white);
+    --border: var(--platinum-silver);
+    --input: var(--platinum-silver);
+    --ring: var(--ferrari-red);
+    --radius: 0.75rem;
+    
+    /* Custom Art Variables */
+    --exhaust-gradient: linear-gradient(135deg, hsl(var(--exhaust-steel)), hsl(var(--smoke-gray)));
+    --paint-splash: linear-gradient(135deg, hsl(var(--paint-blue)), hsl(var(--paint-purple)), hsl(var(--paint-orange)));
+    --ferrari-glow: 0 20px 40px hsla(var(--ferrari-red), 0.3);
+    --art-shadow: 0 25px 50px hsla(var(--carbon-black), 0.15);
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
+@layer components {
+  /* Hero Gradient Background */
+  .hero-gradient {
+    background: linear-gradient(135deg, 
+      hsl(var(--carbon-black)) 0%, 
+      hsl(var(--exhaust-steel)) 50%, 
+      hsl(var(--smoke-gray)) 100%);
   }
-
-  body {
-    @apply bg-background text-foreground;
+  
+  /* Ferrari Button Style */
+  .btn-ferrari {
+    @apply bg-gradient-to-r from-red-600 to-red-700 text-white font-bold py-4 px-8 rounded-lg;
+    @apply hover:from-red-700 hover:to-red-800 transform hover:scale-105 transition-all duration-300;
+    box-shadow: var(--ferrari-glow);
+  }
+  
+  /* Art Card Style */
+  .art-card {
+    @apply bg-white rounded-2xl p-6 border border-gray-200;
+    box-shadow: var(--art-shadow);
+    @apply hover:scale-105 transition-transform duration-500;
+  }
+  
+  /* Paint Splash Effect */
+  .paint-splash {
+    background: var(--paint-splash);
+    @apply bg-clip-text text-transparent;
+  }
+  
+  /* Exhaust Smoke Animation */
+  @keyframes smoke-rise {
+    0% { opacity: 0.8; transform: translateY(0) scale(1); }
+    50% { opacity: 0.4; transform: translateY(-20px) scale(1.1); }
+    100% { opacity: 0; transform: translateY(-40px) scale(1.2); }
+  }
+  
+  .smoke-animation {
+    animation: smoke-rise 3s ease-out infinite;
+  }
+  
+  /* Speed Lines Effect */
+  .speed-lines {
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      hsl(var(--racing-gold)) 50%, 
+      transparent 100%);
+    @apply h-px w-full opacity-30;
   }
 }
